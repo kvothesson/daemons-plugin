@@ -206,6 +206,25 @@ Buscador web rápido y preciso. Le preguntás algo del mundo exterior, entra, to
 /bestiario:mainumby <consulta>
 ```
 
+<details>
+<summary><strong>Ver ejemplo de output</strong></summary>
+
+```
+[MAINUMBY]
+Consulta: precio dolar blue hoy argentina
+Fuente:   https://dolarhoy.com
+
+Dólar blue: $1.285 compra / $1.305 venta (09/05/2026 14:30)
+Brecha con oficial: 21.4%
+Sin variación significativa respecto a ayer.
+
+Otras fuentes:
+- https://ambito.com — confirma mismo valor, agrega contexto de reservas del BCRA
+- https://infobae.com — nota sobre estabilización post-acuerdo FMI
+```
+
+</details>
+
 ![Mainumby](assets/mainumby-portrait.png)
 
 > *"Estuvo. Buscó. Ya no está."*
@@ -219,6 +238,31 @@ Guardián del tiempo de trabajo. Rastrea sesiones de foco, mide cuánto tiempo l
 ```
 /bestiario:kaayaryi [inicio|fin|estado|hoy]
 ```
+
+<details>
+<summary><strong>Ver ejemplo de output</strong></summary>
+
+```
+/bestiario:kaayaryi inicio
+[KA'A YARÝI] Sesión iniciada: 09:14
+El mate está listo. El tiempo corre.
+
+/bestiario:kaayaryi estado
+[KA'A YARÝI] En sesión desde 09:14 — 47 min transcurridos.
+
+/bestiario:kaayaryi fin
+[KA'A YARÝI] Sesión cerrada: 112 min. Largo. Considerá un descanso antes del siguiente.
+
+/bestiario:kaayaryi hoy
+[KA'A YARÝI] Hoy — 09/05/2026
+Sesiones: 3 completadas
+Tiempo total: 287 min (4.8 hs)
+  · 09:14 — 112 min
+  · 14:02 — 98 min
+  · 17:30 — 77 min
+```
+
+</details>
 
 ![Ka'a Yarýi](assets/kaayaryi-portrait.png)
 
@@ -234,6 +278,31 @@ Cambiador de contexto de trabajo. Guarda y restaura entornos: directorio activo,
 /bestiario:lobizon [listar|guardar <nombre>|cargar <nombre>|borrar <nombre>]
 ```
 
+<details>
+<summary><strong>Ver ejemplo de output</strong></summary>
+
+```
+/bestiario:lobizon listar
+[LOBIZÓN] Contextos disponibles:
+  · cliente-acme    — Branch activo: feature/payments. Contacto: maria@acme.com
+  · proyecto-x      — Staging env. Reunión viernes.
+  · personal        — side projects, sin deadline
+
+/bestiario:lobizon cargar cliente-acme
+[LOBIZÓN] Cargando 'cliente-acme'...
+  Directorio: /home/user/dev/acme-backend
+  Variables de entorno a setear:
+    export ENV=staging
+    export API_URL=https://staging.acme.com
+    export DB_NAME=acme_staging
+  Notas: Branch activo: feature/payments. Contacto: maria@acme.com
+
+  Copiá los exports de arriba y ejecutalos en tu shell.
+  El directorio lo podés cambiar con: cd /home/user/dev/acme-backend
+```
+
+</details>
+
 ![El Lobizón](assets/lobizon-portrait.png)
 
 > *"No es el mismo que era antes. Tampoco recuerda haberlo sido."*
@@ -247,6 +316,38 @@ Monitor silencioso de anomalías del entorno. Ve qué pasó mientras no mirabas:
 ```
 /bestiario:luzmala [red|procesos|todo]
 ```
+
+<details>
+<summary><strong>Ver ejemplo de output</strong></summary>
+
+```
+/bestiario:luzmala todo
+[LUZ MALA] Red — 14:32:07
+Conexiones establecidas: 34
+  · chrome:           18 conexiones — 142.250.80.1, 216.58.202.46
+  · node:              8 conexiones — 127.0.0.1
+  · slack:             5 conexiones — 44.238.171.5
+  · python:            3 conexiones — 52.94.236.248
+
+Tráfico total sesión:
+  Enviado:    84.3 MB
+  Recibido:  412.7 MB
+
+[LUZ MALA] Procesos — 14:32:08
+Top CPU:
+  · node                         CPU: 34.2%  RAM: 2.1%
+  · chrome                       CPU:  8.7%  RAM: 4.8%
+
+Iniciados en los últimos 30 min:
+  · [14:11] python3
+  · [14:08] node
+  · [14:03] postgres
+
+Anomalías detectadas:
+  · node con CPU > 30% sostenido — posible loop o build colgado
+```
+
+</details>
 
 ![La Luz Mala](assets/luzmala-portrait.png)
 
@@ -262,6 +363,42 @@ Organizador de archivos acumulados. Analiza descargas y escritorio, agrupa por t
 /bestiario:irupe [analizar|organizar <carpeta>|limpiar-temp]
 ```
 
+<details>
+<summary><strong>Ver ejemplo de output</strong></summary>
+
+```
+/bestiario:irupe analizar
+[IRUPÉ] Análisis de archivos acumulados
+
+Total: 374 archivos en Downloads y Desktop
+
+  .png                 143 archivos  (1034.5 MB)  125 de más de 30 días
+  .mp4                  64 archivos  ( 934.6 MB)   54 de más de 30 días
+  .mp3                  36 archivos  ( 199.8 MB)   34 de más de 30 días
+  .sfk                  27 archivos  (   0.8 MB)   27 de más de 30 días
+  .pdf                  19 archivos  (  10.6 MB)    6 de más de 30 días
+  ...
+
+Para organizar: /bestiario:irupe organizar Downloads
+
+/bestiario:irupe organizar Downloads
+[IRUPÉ] Plan de organización: Downloads
+(nada se mueve hasta que confirmes)
+
+  imagenes/     (167 archivos, 1035.5 MB)
+    · 01.png
+    · 02.png
+    · ... y 165 más
+  video/         (64 archivos, 934.7 MB)
+  audio/         (41 archivos, 318.9 MB)
+  documentos/    (33 archivos,   5.0 MB)
+  instaladores/   (4 archivos,  57.8 MB)
+
+Si querés que lo haga: confirmá con 'sí, organizá'
+```
+
+</details>
+
 ![Irupé](assets/irupe-portrait.png)
 
 > *"Está quieta. El orden llega a ella, no al revés."*
@@ -275,6 +412,33 @@ Probador de resiliencia del entorno. Simula condiciones adversas: corte de red, 
 ```
 /bestiario:ana [listar|red|proceso|disco|restaurar]
 ```
+
+<details>
+<summary><strong>Ver ejemplo de output</strong></summary>
+
+```
+/bestiario:ana listar
+[AÑÁ] Pruebas disponibles:
+  red      — simular pérdida de conectividad (bloquear DNS por 60s)
+  proceso  — crear proceso zombi de alta CPU por 30s
+  disco    — crear archivo de 500MB en /tmp para simular disco lleno
+  restaurar — revertir todas las simulaciones activas
+
+/bestiario:ana proceso
+[AÑÁ] Proceso de alta CPU iniciado por 30 segundos.
+Observá el comportamiento de tu sistema.
+[AÑÁ] Proceso finalizado.
+
+/bestiario:ana red
+[AÑÁ] DNS bloqueado por 60 segundos. Observá qué falla.
+Para restaurar antes: /bestiario:ana restaurar
+
+/bestiario:ana restaurar
+[AÑÁ] Archivo de disco eliminado.
+[AÑÁ] Simulaciones revertidas. El entorno volvió a la normalidad.
+```
+
+</details>
 
 ![Añá](assets/ana-portrait.png)
 
