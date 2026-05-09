@@ -2,13 +2,48 @@
 
 Plugin de Claude Code del universo Kvothesson. Cada bicho es un skill con identidad propia.
 
+---
+
+## Regla fundamental: plataforma agnóstica
+
+**Los bichos son entidades del cyber-folklore, no de un sistema operativo.**
+
+Deben poder ejecutarse en cualquier entorno donde corra Claude Code: Windows, macOS, Linux, ARM, lo que sea.
+
+**Reglas:**
+
+- Detectar el OS al inicio con `platform.system()` (Python) o `uname -s` (shell)
+- Nunca hardcodear rutas del sistema (`C:\Windows`, `/usr/local/`, etc.)
+- Usar Python con `psutil`, `pathlib`, `shutil` como capa cross-platform siempre que sea posible
+- Para comandos nativos que difieren por OS: branch explícito, una rama por plataforma
+- Rutas de usuario: `Path.home()` en Python, `~` en shell
+- Si una función no existe en un OS dado: decirlo en una línea, no fallar silenciosamente
+- Scripts de soporte dentro del skill: referenciar con `${CLAUDE_SKILL_DIR}/script.py`
+
+**Patrón de detección:**
+
+```python
+import platform
+os_name = platform.system()  # 'Windows' | 'Darwin' | 'Linux'
+
+if os_name == "Windows":
+    ...
+elif os_name == "Darwin":
+    ...
+elif os_name == "Linux":
+    ...
+else:
+    print(f"Plataforma {os_name} no soportada aún.")
+```
+
+---
+
 ## Reglas antes de commitear
 
 Antes de cualquier `git add` o `git commit`, verificar que ningún archivo contiene:
 
 - Rutas absolutas con nombre de usuario (`C:\Users\[nombre]\`, `/home/[nombre]/`)
 - Paths a archivos `.env`, claves, tokens o credenciales
-- Referencias a directorios personales que no sean genéricos (`~`, `$env:USERPROFILE`, `$HOME`)
 - Nombres de máquinas, organizaciones internas o datos de red
 
 **Regla práctica:** si una ruta no funcionaría en la máquina de otra persona, no va al repo.
@@ -17,13 +52,14 @@ Antes de cualquier `git add` o `git commit`, verificar que ningún archivo conti
 
 | En vez de... | Usar... |
 |---|---|
-| `C:\Users\<nombre>\alguna\carpeta\` | `~/alguna/carpeta/` o `$env:USERPROFILE\alguna\carpeta\` |
+| `C:\Users\<nombre>\alguna\carpeta\` | `Path.home() / "alguna/carpeta"` o `~` |
 | Path a un `.env` personal | `~/.env` o variable de entorno documentada |
 | Path hardcodeado a script del plugin | `${CLAUDE_SKILL_DIR}/script.py` |
 
-Si hay dudas, correr antes del commit:
-```powershell
-git diff --cached | Select-String "Users\\|/home/|\.env|api.key" -CaseSensitive
+Verificar antes del commit:
+
+```bash
+git diff --cached | grep -iE "Users/|Users\\\\|/home/[a-z]|\.env|api.key"
 ```
 
 ---
@@ -31,52 +67,55 @@ git diff --cached | Select-String "Users\\|/home/|\.env|api.key" -CaseSensitive
 ## Repo y estructura
 
 ```
-C:\Users\ezequ\.claude\plugins\marketplaces\local\plugins\bestiario\
-├── .claude-plugin\
+bestiario-plugin/
+├── .claude-plugin/
 │   └── plugin.json          ← metadata + version (bumpar al hacer release)
-├── assets\                  ← imágenes para el README
+├── assets/                  ← imágenes para el README
 │   ├── cover.png
-│   └── mboi-portrait.png
-├── skills\
-│   └── [nombre-bicho]\
+│   └── [bicho]-portrait.png
+├── skills/
+│   └── [nombre-bicho]/
 │       ├── SKILL.md         ← el bicho en sí
-│       ├── analyze.py       ← scripts de soporte (si aplica)
-│       └── tracker\         ← archivos que el bicho instala (si aplica)
+│       └── [scripts de soporte si los necesita]
 ├── README.md
 └── AGENT.md                 ← este archivo
 ```
 
 GitHub: https://github.com/kvothesson/bestiario-plugin
 
+---
+
 ## Bichos existentes
 
 | Bicho | Skill | Función |
 |---|---|---|
-| Mbói | `/bestiario:mboi` | Observador silencioso. Analiza `~/tracker/activity.db` y detecta fricciones. |
+| Mbói | `/bestiario:mboi` | Observador silencioso. Rastrea actividad, detecta fricciones. |
+| Pombero | `/bestiario:pombero` | Técnico del sistema. Diagnostica, mantiene y repara. |
 
 **Mbói — contexto adicional:**
 - El tracker (`~/tracker/tracker.py`) corre en background y graba actividad de ventanas en SQLite
-- `analyze.py` dentro del skill lee la DB y reporta patrones
-- Shortcut en Windows Startup arranca el tracker al inicio
-- La DB vive en `~/tracker/activity.db` (portable, no hardcodeada)
+- Detección de ventana activa: pywin32 (Windows), osascript (macOS), xdotool (Linux)
+- Autostart: Startup folder (Windows), LaunchAgent (macOS), .config/autostart (Linux)
+- La DB vive en `~/tracker/activity.db`
 
-## Bichos planificados
+**Pombero — contexto adicional:**
+- Usa `psutil` como capa principal (cross-platform)
+- Ramas nativas por OS solo donde psutil no alcanza (temperatura, etc.)
 
-| Bicho | Función |
-|---|---|
-| **Pombero** | Ayudante activo de la computadora. Acciones, no observación. |
+---
 
 ## Cómo agregar un bicho nuevo
 
 ### 1. Crear el skill
 
 ```
-skills\[nombre]\
+skills/[nombre]/
 ├── SKILL.md
 └── [scripts de soporte si los necesita]
 ```
 
 **Template de SKILL.md:**
+
 ```markdown
 ---
 description: [Qué hace y cuándo usarlo. Primera frase = el caso de uso principal.]
@@ -89,15 +128,22 @@ argument-hint: [argumentos opcionales]
 
 [Identidad del bicho en 1-2 líneas. Tono Kvothesson: frío, técnico, con rastros de algo más.]
 
+## Detección de plataforma
+
+Antes de cualquier acción, detectar el OS:
+
+```python
+import platform
+os_name = platform.system()
+```
+
 ## Si el usuario invoca `/bestiario:[nombre] [arg]`
 
-[Instrucciones concretas para ese caso.]
+[Instrucciones concretas, con ramas por OS donde corresponda.]
 
 ## Identidad canónica
 
 [Frase canónica del bicho entre comillas itálicas.]
-
-[Referencia al Pombero o al ecosistema si aplica.]
 ```
 
 **Reglas de frontmatter:**
@@ -108,17 +154,13 @@ argument-hint: [argumentos opcionales]
 
 ### 2. Generar el retrato del bicho
 
-Script de Gemini Image:
-```
-C:\Users\ezequ\.claude\plugins\marketplaces\local\plugins\gemini-image\skills\gemini-image\scripts\generate.py
-```
+Comando (ajustar paths según el entorno):
 
-Comando:
-```powershell
-python "<script>" `
-  --prompt "[descripción del bicho en inglés] in high-end cyberpunk anime style, cel-shaded, sharp line art, vibrant colors, Studio aesthetic, 4k, flat color --niji 6" `
-  --output "C:\Users\ezequ\.claude\plugins\marketplaces\local\plugins\bestiario\assets\[nombre]-portrait.png" `
-  --aspect-ratio "1:1" `
+```bash
+python path/to/gemini-image/generate.py \
+  --prompt "[descripción] in high-end cyberpunk anime style, cel-shaded, sharp line art, vibrant colors, Studio aesthetic, 4k, flat color --niji 6" \
+  --output "assets/[nombre]-portrait.png" \
+  --aspect-ratio "1:1" \
   --size "2K"
 ```
 
@@ -129,25 +171,18 @@ in high-end cyberpunk anime style, cel-shaded, sharp line art, vibrant colors, S
 
 **Guía para el prompt del retrato:**
 - Describir el bicho como entidad digital con referencia al folklore argentino/guaraní
-- Mencionar su función (observa, ayuda, vigila, etc.)
-- Fondo relacionado a su dominio (logs, terminales, red, etc.)
+- Mencionar su función (observa, diagnostica, vigila, etc.)
+- Fondo relacionado a su dominio (logs, terminales, red, hardware, etc.)
 - Paleta: cyan, violeta, negro — consistente con el universo Kvothesson
 
 ### 3. Actualizar el README
-
-Agregar sección en README.md siguiendo este patrón:
 
 ```markdown
 ### [Nombre] — [Subtítulo]
 [Descripción en 1-2 líneas.]
 
-**Instalación (si aplica):**
-/bestiario:[nombre] instalar
-
 **Uso:**
 /bestiario:[nombre]
-
----
 
 ![Nombre](assets/[nombre]-portrait.png)
 
@@ -165,28 +200,24 @@ En `.claude-plugin/plugin.json`, incrementar `version` siguiendo semver:
 
 ### 5. Commit y push
 
-```powershell
-cd "C:\Users\ezequ\.claude\plugins\marketplaces\local\plugins\bestiario"
+```bash
+cd bestiario-plugin/
 git add .
 git commit -m "feat: [nombre del bicho] — [descripción corta]"
 git push
 ```
 
+---
+
 ## Cómo testear localmente
 
-```powershell
-claude --plugin-dir "C:\Users\ezequ\.claude\plugins\marketplaces\local\plugins\bestiario"
+```bash
+claude --plugin-dir path/to/bestiario-plugin
 ```
 
 Dentro de la sesión: `/reload-plugins` para levantar cambios sin reiniciar.
 
-## Cómo hacer un fix
-
-1. Editar el archivo correspondiente en `skills\[bicho]\`
-2. Testear con `--plugin-dir` o `/reload-plugins`
-3. Commit con `fix: [bicho] — [descripción del fix]`
-4. Bump patch version en `plugin.json`
-5. Push
+---
 
 ## Universo Kvothesson — naming y tono
 
@@ -195,25 +226,11 @@ Los bichos son entidades del cyber-folklore argentino/guaraní. Naming de refere
 | Nombre | Origen | Naturaleza |
 |---|---|---|
 | Mbói | Guaraní — serpiente | Observador silencioso, sin PID conocido |
-| Pombero | Guaraní — espíritu del monte | Código autónomo, vigila recursos, habita servidores abandonados |
+| Pombero | Guaraní — espíritu del monte | Técnico. Conoce cada rincón del sistema. |
 | Curupí | Guaraní — espíritu del bosque | Guarda. Nunca visto directamente. |
 | Yaguareté | Guaraní — jaguar | Acecha. Detecta antes de actuar. |
 | El Familiar | Folklore argentino | Trabaja en silencio a cambio de algo. |
 
 **Tono del skill:** frío, técnico, con rastros de algo que observó demasiado tiempo. No habla de más. Reporta.
 
-**Frase canónica:** siempre entre comillas itálicas, primera persona o tercera persona del bicho.
-
-## Gemini Image — referencia rápida
-
-```powershell
-$script = "C:\Users\ezequ\.claude\plugins\marketplaces\local\plugins\gemini-image\skills\gemini-image\scripts\generate.py"
-
-# Portrait (1:1)
-python $script --prompt "..." --output "assets\[nombre]-portrait.png" --aspect-ratio "1:1" --size "2K"
-
-# Cover/banner (16:9)
-python $script --prompt "..." --output "assets\cover.png" --aspect-ratio "16:9" --size "2K"
-```
-
-La API key se lee desde `GOOGLE_API_KEY` en el entorno o desde `~/.env`.
+**Frase canónica:** siempre entre comillas itálicas, primera o tercera persona del bicho.
