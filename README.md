@@ -31,6 +31,8 @@ Diagnostica, mantiene y repara la PC. Salud del hardware, rendimiento, disco, re
 
 ---
 
+![Pombero](assets/pombero-portrait.png)
+
 > *"Ya sabía lo que iba a encontrar. Lo que cambia es cuándo te lo cuento."*
 
 ---
