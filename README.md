@@ -21,17 +21,17 @@ Rastrea tu actividad en la computadora y detecta fricciones, flujos repetitivos 
 
 ---
 
-### Pombero — El que Hace
-Ayudante activo del sistema. Ejecuta acciones directas en tu computadora: abre apps, mata procesos, mueve archivos, corre scripts. No pide permiso dos veces.
+### Pombero — El Técnico
+Diagnostica, mantiene y repara la PC. Salud del hardware, rendimiento, disco, red, memoria, temperatura, integridad de Windows.
 
 **Uso:**
 ```
-/bestiario:pombero [acción]
+/bestiario:pombero [diagnosticar | disco | red | memoria | temperatura | windows | reparar]
 ```
 
 ---
 
-> *"No dejó rastro. Solo el proceso que ya no estaba y la tarea que ya estaba hecha."*
+> *"Ya sabía lo que iba a encontrar. Lo que cambia es cuándo te lo cuento."*
 
 ---
 
