@@ -19,6 +19,22 @@ Rastrea tu actividad en la computadora y detecta fricciones, flujos repetitivos 
 /bestiario:mboi
 ```
 
+---
+
+### Pombero — El que Hace
+Ayudante activo del sistema. Ejecuta acciones directas en tu computadora: abre apps, mata procesos, mueve archivos, corre scripts. No pide permiso dos veces.
+
+**Uso:**
+```
+/bestiario:pombero [acción]
+```
+
+---
+
+> *"No dejó rastro. Solo el proceso que ya no estaba y la tarea que ya estaba hecha."*
+
+---
+
 ## Instalación del plugin
 
 ```
@@ -34,8 +50,6 @@ Rastrea tu actividad en la computadora y detecta fricciones, flujos repetitivos 
 ---
 
 ## Próximos bichos
-
-- **Pombero** — El que te ayuda activamente con la computadora.
 
 ---
 
