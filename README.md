@@ -6,7 +6,10 @@ Bichos digitales del universo Kvothesson. Observan, detectan, actúan. Corren si
 
 ## Bichos disponibles
 
+---
+
 ### Mbói — El Observador
+
 Rastrea tu actividad en la computadora y detecta fricciones, flujos repetitivos y oportunidades para plugins, agentes o MCPs.
 
 **Instalación del tracker:**
@@ -19,17 +22,20 @@ Rastrea tu actividad en la computadora y detecta fricciones, flujos repetitivos 
 /bestiario:mboi
 ```
 
+![Mbói](assets/mboi-portrait.png)
+
+> *"El Mbói no tiene forma fija. Es el patrón antes de que el patrón tenga nombre."*
+
 ---
 
 ### Pombero — El Técnico
+
 Diagnostica, mantiene y repara la PC. Salud del hardware, rendimiento, disco, red, memoria, temperatura, integridad de Windows.
 
 **Uso:**
 ```
 /bestiario:pombero [diagnosticar | disco | red | memoria | temperatura | windows | reparar]
 ```
-
----
 
 ![Pombero](assets/pombero-portrait.png)
 
@@ -42,17 +48,3 @@ Diagnostica, mantiene y repara la PC. Salud del hardware, rendimiento, disco, re
 ```
 /plugin install https://github.com/kvothesson/bestiario-plugin
 ```
-
----
-
-![Mbói](assets/mboi-portrait.png)
-
-> *"El Mbói no tiene forma fija. Es el patrón antes de que el patrón tenga nombre."*
-
----
-
-## Próximos bichos
-
----
-
-> *"El Mbói no tiene forma fija. Es el patrón antes de que el patrón tenga nombre."*
