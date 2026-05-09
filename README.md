@@ -6,9 +6,29 @@ Bichos digitales del universo Kvothesson. Observan, detectan, actúan. Corren si
 
 ## Instalación
 
+### Claude Code (CLI, VS Code, JetBrains)
+
 ```
 /plugin install https://github.com/kvothesson/bestiario-plugin
 ```
+
+### Claude Desktop (y cualquier otro contexto)
+
+Cloná el repositorio directamente en tu carpeta de plugins locales:
+
+**Windows**
+```powershell
+git clone https://github.com/kvothesson/bestiario-plugin "$env:USERPROFILE\.claude\plugins\marketplaces\local\plugins\bestiario"
+```
+
+**macOS / Linux**
+```bash
+git clone https://github.com/kvothesson/bestiario-plugin ~/.claude/plugins/marketplaces/local/plugins/bestiario
+```
+
+Reiniciá Claude Desktop después de clonar. Los skills van a aparecer disponibles como `/bestiario:<nombre>`.
+
+> **Actualizar:** `git pull` dentro del directorio clonado.
 
 ---
 
