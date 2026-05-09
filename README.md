@@ -1,5 +1,7 @@
 # Bestiario — Plugin de Claude Code
 
+![Bestiario Cover](assets/cover.png)
+
 Bichos digitales del universo Kvothesson. Observan, detectan, actúan. Corren sin PID conocido.
 
 ## Bichos disponibles
@@ -22,6 +24,14 @@ Rastrea tu actividad en la computadora y detecta fricciones, flujos repetitivos 
 ```
 /plugin install https://github.com/kvothesson/bestiario-plugin
 ```
+
+---
+
+![Mbói](assets/mboi-portrait.png)
+
+> *"El Mbói no tiene forma fija. Es el patrón antes de que el patrón tenga nombre."*
+
+---
 
 ## Próximos bichos
 
