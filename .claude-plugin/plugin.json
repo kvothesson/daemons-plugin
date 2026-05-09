@@ -1,0 +1,9 @@
+{
+  "name": "bestiario",
+  "description": "Bichos digitales del universo Kvothesson. Observan, detectan, actúan. Corren sin PID conocido.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Kvothesson"
+  },
+  "repository": "https://github.com/kvothesson/bestiario-plugin"
+}
