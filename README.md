@@ -197,3 +197,87 @@ Reparación completa.
 > *"Ya sabía lo que iba a encontrar. Lo que cambia es cuándo te lo cuento."*
 
 ---
+
+### Mainumby — El Colibrí Digital
+
+Buscador web rápido y preciso. Le preguntás algo del mundo exterior, entra, toma lo esencial y sale. Sin browser, sin distracción, sin preámbulo.
+
+```
+/bestiario:mainumby <consulta>
+```
+
+![Mainumby](assets/mainumby-portrait.png)
+
+> *"Estuvo. Buscó. Ya no está."*
+
+---
+
+### Ka'a Yarýi — El Espíritu de la Yerba
+
+Guardián del tiempo de trabajo. Rastrea sesiones de foco, mide cuánto tiempo llevás, detecta cuándo el bloque fue demasiado largo. No da consejos — muestra el número.
+
+```
+/bestiario:kaayaryi [inicio|fin|estado|hoy]
+```
+
+![Ka'a Yarýi](assets/kaayaryi-portrait.png)
+
+> *"Sabe cuánto tiempo llevás. No lo dice hasta que preguntás."*
+
+---
+
+### El Lobizón — El que se Transforma
+
+Cambiador de contexto de trabajo. Guarda y restaura entornos: directorio activo, variables de entorno, notas de proyecto. Útil para alternar entre proyectos, clientes o roles.
+
+```
+/bestiario:lobizon [listar|guardar <nombre>|cargar <nombre>|borrar <nombre>]
+```
+
+![El Lobizón](assets/lobizon-portrait.png)
+
+> *"No es el mismo que era antes. Tampoco recuerda haberlo sido."*
+
+---
+
+### La Luz Mala — El Fuego Fatuo
+
+Monitor silencioso de anomalías del entorno. Ve qué pasó mientras no mirabas: picos de red, procesos nuevos, conexiones inesperadas. No avisa si no hay nada. Aparece cuando algo no cuadra.
+
+```
+/bestiario:luzmala [red|procesos|todo]
+```
+
+![La Luz Mala](assets/luzmala-portrait.png)
+
+> *"Nadie la llama. Llega igual. Siempre donde no debería haber nada."*
+
+---
+
+### Irupé — La Flor del Agua
+
+Organizador de archivos acumulados. Analiza descargas y escritorio, agrupa por tipo y fecha, propone estructura. No mueve nada hasta que el usuario confirme.
+
+```
+/bestiario:irupe [analizar|organizar <carpeta>|limpiar-temp]
+```
+
+![Irupé](assets/irupe-portrait.png)
+
+> *"Está quieta. El orden llega a ella, no al revés."*
+
+---
+
+### Añá — El Espíritu del Mal
+
+Probador de resiliencia del entorno. Simula condiciones adversas: corte de red, proceso de alta CPU, disco lleno. Para descubrir qué tan frágil es lo que construiste antes de que lo descubra solo.
+
+```
+/bestiario:ana [listar|red|proceso|disco|restaurar]
+```
+
+![Añá](assets/ana-portrait.png)
+
+> *"No es el mal. Es lo que el mal haría. La diferencia importa."*
+
+---

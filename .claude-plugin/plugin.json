@@ -1,9 +1,43 @@
 {
   "name": "bestiario",
   "description": "Bichos digitales del universo Kvothesson. Observan, detectan, actúan. Corren sin PID conocido.",
-  "version": "1.1.0",
+  "version": "1.7.0",
   "author": {
     "name": "Kvothesson"
   },
-  "repository": "https://github.com/kvothesson/bestiario-plugin"
+  "repository": "https://github.com/kvothesson/bestiario-plugin",
+  "skills": [
+    {
+      "name": "mboi",
+      "path": "skills/mboi/SKILL.md"
+    },
+    {
+      "name": "pombero",
+      "path": "skills/pombero/SKILL.md"
+    },
+    {
+      "name": "mainumby",
+      "path": "skills/mainumby/SKILL.md"
+    },
+    {
+      "name": "kaayaryi",
+      "path": "skills/kaayaryi/SKILL.md"
+    },
+    {
+      "name": "lobizon",
+      "path": "skills/lobizon/SKILL.md"
+    },
+    {
+      "name": "luzmala",
+      "path": "skills/luzmala/SKILL.md"
+    },
+    {
+      "name": "irupe",
+      "path": "skills/irupe/SKILL.md"
+    },
+    {
+      "name": "ana",
+      "path": "skills/ana/SKILL.md"
+    }
+  ]
 }
