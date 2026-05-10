@@ -1,30 +1,50 @@
-# AGENT.md — AR Plugins
+# Bestiario — Contexto de desarrollo
 
-Punto de entrada para cualquier agente o desarrollador que trabaje en este ecosistema.
-Lee esto completo antes de tocar cualquier archivo.
+Plugin de Claude Code del universo Kvothesson. Cada bicho es un skill con identidad propia.
 
----
-
-## Indice
-
-1. Que es esto
-2. Arquitectura del ecosistema
-3. El marketplace
-4. Plugins
-5. Skills
-6. Workflows de desarrollo
-7. Principios
-8. Referencias
+GitHub: https://github.com/kvothesson/bestiario-plugin
 
 ---
 
-## 1. Que es esto
+## Índice — leer según tarea
 
-AR Plugins es un marketplace de plugins de Claude Code para el ecosistema argentino. Cada plugin conecta a Claude con datos reales de Argentina — organismos oficiales, APIs publicas, fuentes primarias — y los expone como skills invocables desde Claude Code.
-
-**Objetivo:** datos reales, fuentes primarias, lenguaje llano. Sin intermediarios, sin hardcodear valores que cambian.
+| Tarea | Archivo |
+|---|---|
+| Ver qué hace cada bicho, sus args y contexto técnico | [.agents/bichos.md](.agents/bichos.md) |
+| Escribir o corregir un `SKILL.md` | [.agents/skills.md](.agents/skills.md) |
+| Agregar bicho nuevo, checklist completo | [.agents/workflows.md](.agents/workflows.md) |
+| Naming, tono, universo Kvothesson, reglas cross-platform | [.agents/identidad.md](.agents/identidad.md) |
 
 ---
 
-## 2. Arquitectura del ecosistema
+## Estructura del repo
 
+```
+bestiario-plugin/
+├── .agents/
+│   ├── bichos.md        ← catálogo y contexto de cada bicho
+│   ├── skills.md        ← cómo escribir un SKILL.md de bicho
+│   ├── workflows.md     ← flujo completo para agregar bicho nuevo
+│   └── identidad.md     ← naming, tono, universo Kvothesson, cross-platform
+├── .claude-plugin/
+│   └── plugin.json      ← metadata + version (bumpar al hacer release)
+├── assets/              ← imágenes para el README
+├── skills/
+│   └── [nombre-bicho]/
+│       ├── SKILL.md
+│       └── [scripts de soporte]
+├── README.md
+└── AGENT.md             ← este archivo
+```
+
+---
+
+## Reglas antes de commitear
+
+Verificar que ningún archivo contiene rutas absolutas con nombre de usuario, paths a `.env`, tokens o credenciales, nombres de máquinas u organizaciones internas.
+
+```bash
+git diff --cached | grep -iE "Users/|Users\\|/home/[a-z]|\.env|api.key"
+```
+
+Si una ruta no funcionaría en la máquina de otra persona, no va al repo.
