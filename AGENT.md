@@ -1,8 +1,8 @@
-# Bestiario — Contexto de desarrollo
+# Daemons — Contexto de desarrollo
 
 Plugin de Claude Code del universo Kvothesson. Cada bicho es un skill con identidad propia.
 
-GitHub: https://github.com/kvothesson/bestiario-plugin
+GitHub: https://github.com/kvothesson/daemons-plugin
 
 ---
 
@@ -20,7 +20,7 @@ GitHub: https://github.com/kvothesson/bestiario-plugin
 ## Estructura del repo
 
 ```
-bestiario-plugin/
+daemons-plugin/
 ├── .agents/
 │   ├── bichos.md        ← catálogo y contexto de cada bicho
 │   ├── skills.md        ← cómo escribir un SKILL.md de bicho

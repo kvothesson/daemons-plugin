@@ -1,4 +1,4 @@
-# Bestiario — Plugin de Claude Code
+# Daemons — Plugin de Claude Code
 
 ![Bestiario Cover](assets/cover.png)
 
@@ -9,7 +9,7 @@ Bichos digitales del universo Kvothesson. Observan, detectan, actúan. Corren si
 ### Claude Code (CLI, VS Code, JetBrains)
 
 ```
-/plugin install https://github.com/kvothesson/bestiario-plugin
+/plugin install https://github.com/kvothesson/daemons-plugin
 ```
 
 ### Claude Desktop (y cualquier otro contexto)
@@ -18,15 +18,15 @@ Cloná el repositorio directamente en tu carpeta de plugins locales:
 
 **Windows**
 ```powershell
-git clone https://github.com/kvothesson/bestiario-plugin "$env:USERPROFILE\.claude\plugins\marketplaces\local\plugins\bestiario"
+git clone https://github.com/kvothesson/daemons-plugin "$env:USERPROFILE\.claude\plugins\marketplaces\local\plugins\daemons"
 ```
 
 **macOS / Linux**
 ```bash
-git clone https://github.com/kvothesson/bestiario-plugin ~/.claude/plugins/marketplaces/local/plugins/bestiario
+git clone https://github.com/kvothesson/daemons-plugin ~/.claude/plugins/marketplaces/local/plugins/daemons
 ```
 
-Reiniciá Claude Desktop después de clonar. Los skills van a aparecer disponibles como `/bestiario:<nombre>`.
+Reiniciá Claude Desktop después de clonar. Los skills van a aparecer disponibles como `/daemons:<nombre>`.
 
 > **Actualizar:** `git pull` dentro del directorio clonado.
 
@@ -44,12 +44,12 @@ Instala un tracker silencioso que registra qué apps usás y cuánto tiempo. Cua
 
 **Instalar tracker:**
 ```
-/bestiario:mboi instalar
+/daemons:mboi instalar
 ```
 
 **Analizar (con datos acumulados):**
 ```
-/bestiario:mboi
+/daemons:mboi
 ```
 
 <details>
@@ -124,7 +124,7 @@ Mercado:   Devs de TypeScript. Millones.
 Diagnostica, mantiene y repara tu sistema. Salud del hardware, rendimiento, disco, red, memoria, temperatura. Funciona en Windows, macOS y Linux.
 
 ```
-/bestiario:pombero [diagnosticar | disco | red | memoria | temperatura | reparar]
+/daemons:pombero [diagnosticar | disco | red | memoria | temperatura | reparar]
 ```
 
 <details>
@@ -223,7 +223,7 @@ Reparación completa.
 Buscador web rápido y preciso. Le preguntás algo del mundo exterior, entra, toma lo esencial y sale. Sin browser, sin distracción, sin preámbulo.
 
 ```
-/bestiario:mainumby <consulta>
+/daemons:mainumby <consulta>
 ```
 
 <details>
@@ -256,24 +256,24 @@ Otras fuentes:
 Guardián del tiempo de trabajo. Rastrea sesiones de foco, mide cuánto tiempo llevás, detecta cuándo el bloque fue demasiado largo. No da consejos — muestra el número.
 
 ```
-/bestiario:kaayaryi [inicio|fin|estado|hoy]
+/daemons:kaayaryi [inicio|fin|estado|hoy]
 ```
 
 <details>
 <summary><strong>Ver ejemplo de output</strong></summary>
 
 ```
-/bestiario:kaayaryi inicio
+/daemons:kaayaryi inicio
 [KA'A YARÝI] Sesión iniciada: 09:14
 El mate está listo. El tiempo corre.
 
-/bestiario:kaayaryi estado
+/daemons:kaayaryi estado
 [KA'A YARÝI] En sesión desde 09:14 — 47 min transcurridos.
 
-/bestiario:kaayaryi fin
+/daemons:kaayaryi fin
 [KA'A YARÝI] Sesión cerrada: 112 min. Largo. Considerá un descanso antes del siguiente.
 
-/bestiario:kaayaryi hoy
+/daemons:kaayaryi hoy
 [KA'A YARÝI] Hoy — 09/05/2026
 Sesiones: 3 completadas
 Tiempo total: 287 min (4.8 hs)
@@ -295,20 +295,20 @@ Tiempo total: 287 min (4.8 hs)
 Cambiador de contexto de trabajo. Guarda y restaura entornos: directorio activo, variables de entorno, notas de proyecto. Útil para alternar entre proyectos, clientes o roles.
 
 ```
-/bestiario:lobizon [listar|guardar <nombre>|cargar <nombre>|borrar <nombre>]
+/daemons:lobizon [listar|guardar <nombre>|cargar <nombre>|borrar <nombre>]
 ```
 
 <details>
 <summary><strong>Ver ejemplo de output</strong></summary>
 
 ```
-/bestiario:lobizon listar
+/daemons:lobizon listar
 [LOBIZÓN] Contextos disponibles:
   · cliente-acme    — Branch activo: feature/payments. Contacto: maria@acme.com
   · proyecto-x      — Staging env. Reunión viernes.
   · personal        — side projects, sin deadline
 
-/bestiario:lobizon cargar cliente-acme
+/daemons:lobizon cargar cliente-acme
 [LOBIZÓN] Cargando 'cliente-acme'...
   Directorio: /home/user/dev/acme-backend
   Variables de entorno a setear:
@@ -334,14 +334,14 @@ Cambiador de contexto de trabajo. Guarda y restaura entornos: directorio activo,
 Monitor silencioso de anomalías del entorno. Ve qué pasó mientras no mirabas: picos de red, procesos nuevos, conexiones inesperadas. No avisa si no hay nada. Aparece cuando algo no cuadra.
 
 ```
-/bestiario:luzmala [red|procesos|todo]
+/daemons:luzmala [red|procesos|todo]
 ```
 
 <details>
 <summary><strong>Ver ejemplo de output</strong></summary>
 
 ```
-/bestiario:luzmala todo
+/daemons:luzmala todo
 [LUZ MALA] Red — 14:32:07
 Conexiones establecidas: 34
   · chrome:           18 conexiones — 142.250.80.1, 216.58.202.46
@@ -380,14 +380,14 @@ Anomalías detectadas:
 Organizador de archivos acumulados. Analiza descargas y escritorio, agrupa por tipo y fecha, propone estructura. No mueve nada hasta que el usuario confirme.
 
 ```
-/bestiario:irupe [analizar|organizar <carpeta>|limpiar-temp]
+/daemons:irupe [analizar|organizar <carpeta>|limpiar-temp]
 ```
 
 <details>
 <summary><strong>Ver ejemplo de output</strong></summary>
 
 ```
-/bestiario:irupe analizar
+/daemons:irupe analizar
 [IRUPÉ] Análisis de archivos acumulados
 
 Total: 374 archivos en Downloads y Desktop
@@ -399,9 +399,9 @@ Total: 374 archivos en Downloads y Desktop
   .pdf                  19 archivos  (  10.6 MB)    6 de más de 30 días
   ...
 
-Para organizar: /bestiario:irupe organizar Downloads
+Para organizar: /daemons:irupe organizar Downloads
 
-/bestiario:irupe organizar Downloads
+/daemons:irupe organizar Downloads
 [IRUPÉ] Plan de organización: Downloads
 (nada se mueve hasta que confirmes)
 
@@ -430,30 +430,30 @@ Si querés que lo haga: confirmá con 'sí, organizá'
 Probador de resiliencia del entorno. Simula condiciones adversas: corte de red, proceso de alta CPU, disco lleno. Para descubrir qué tan frágil es lo que construiste antes de que lo descubra solo.
 
 ```
-/bestiario:ana [listar|red|proceso|disco|restaurar]
+/daemons:ana [listar|red|proceso|disco|restaurar]
 ```
 
 <details>
 <summary><strong>Ver ejemplo de output</strong></summary>
 
 ```
-/bestiario:ana listar
+/daemons:ana listar
 [AÑÁ] Pruebas disponibles:
   red      — simular pérdida de conectividad (bloquear DNS por 60s)
   proceso  — crear proceso zombi de alta CPU por 30s
   disco    — crear archivo de 500MB en /tmp para simular disco lleno
   restaurar — revertir todas las simulaciones activas
 
-/bestiario:ana proceso
+/daemons:ana proceso
 [AÑÁ] Proceso de alta CPU iniciado por 30 segundos.
 Observá el comportamiento de tu sistema.
 [AÑÁ] Proceso finalizado.
 
-/bestiario:ana red
+/daemons:ana red
 [AÑÁ] DNS bloqueado por 60 segundos. Observá qué falla.
-Para restaurar antes: /bestiario:ana restaurar
+Para restaurar antes: /daemons:ana restaurar
 
-/bestiario:ana restaurar
+/daemons:ana restaurar
 [AÑÁ] Archivo de disco eliminado.
 [AÑÁ] Simulaciones revertidas. El entorno volvió a la normalidad.
 ```
