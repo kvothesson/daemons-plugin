@@ -1,6 +1,12 @@
 # Daemons — Plugin de Claude Code
 
-![Bestiario Cover](assets/cover.png)
+<p align="center">
+  <img src="assets/cover.png" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="assets/demo.gif" width="680"/>
+</p>
 
 Bichos digitales del universo Kvothesson. Observan, detectan, actúan. Corren sin PID conocido.
 
