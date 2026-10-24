@@ -1,8 +1,8 @@
 ---
-description: Cambiador de contexto de trabajo. Guarda y restaura el estado de un entorno: variables de entorno, directorio activo, notas de contexto. Útil para alternar entre proyectos, clientes o roles.
+description: 'Cambiador de contexto de trabajo. Guarda y restaura el estado de un entorno: variables de entorno, directorio activo, notas de contexto. Útil para alternar entre proyectos, clientes o roles.'
 disable-model-invocation: true
 allowed-tools: Bash Read
-argument-hint: [listar|guardar <nombre>|cargar <nombre>|borrar <nombre>]
+argument-hint: '[listar|guardar <nombre>|cargar <nombre>|borrar <nombre>]'
 ---
 
 # El Lobizón — El que se Transforma
