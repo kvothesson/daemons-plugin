@@ -1,8 +1,8 @@
 ---
-description: Probador de resiliencia del entorno. Simula condiciones adversas: corte de red, proceso zombi, disco lleno, respuesta lenta. Para descubrir qué tan frágil es lo que construiste antes de que lo descubra solo.
+description: 'Probador de resiliencia del entorno. Simula condiciones adversas: corte de red, proceso zombi, disco lleno, respuesta lenta. Para descubrir qué tan frágil es lo que construiste antes de que lo descubra solo.'
 disable-model-invocation: true
 allowed-tools: Bash Read
-argument-hint: [red|proceso|disco|listar|restaurar]
+argument-hint: '[red|proceso|disco|listar|restaurar]'
 ---
 
 # Añá — El Espíritu del Mal
